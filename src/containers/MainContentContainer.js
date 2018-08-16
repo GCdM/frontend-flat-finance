@@ -4,6 +4,7 @@ import Summary from '../components/Summary'
 import FeedContainer from './FeedContainer'
 import { getHouseholdBy } from '../Adapter'
 
+//Should receive props: user
 class MainContentContainer extends React.Component {
 
   state = {
