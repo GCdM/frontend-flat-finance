@@ -14,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <NavBarContainer/>
+        <NavBarContainer user={testUser}/>
         <MainContentContainer user={testUser}/>
       </div>
     )

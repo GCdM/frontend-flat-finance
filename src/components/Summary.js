@@ -1,5 +1,6 @@
 import React from 'react'
 
+//Should receive props: title, info
 const Summary = (props) => {
 
   const list = props.info.map( info => <div className="col">{info}</div> )
