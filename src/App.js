@@ -1,8 +1,11 @@
 import React from 'react'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import './App.css'
 import NavBarContainer from './containers/NavBarContainer'
 import MainContentContainer from './containers/MainContentContainer'
+import AuthAction from './auth/AuthAction'
+import { createUser, loginUser, getCurrentUser } from './Adapter'
 
 const testUser = {
   "id": 2,
@@ -11,14 +14,75 @@ const testUser = {
 }
 
 class App extends React.Component {
+
+  state = {
+    current_user: null,
+  }
+
+  postAuth = (userData) => {
+    if (userData.error) {
+      alert(userData.error)
+    } else {
+      this.props.history.push('/')
+      localStorage.setItem('token', userData.token)
+      this.updateCurrentUser(userData.token)
+    }
+  }
+
+  signUp = (username, password) => {
+    createUser(username, password).then( this.postAuth )
+  }
+
+  login = (username, password) => {
+    loginUser(username, password).then( this.postAuth )
+  }
+
+  logout = () => {
+    this.setState({
+      current_user: null
+    })
+    this.props.history.push('/login')
+    localStorage.clear()
+  }
+
+  updateCurrentUser = (token) => {
+    getCurrentUser(token).then( userData => {
+      if (userData.error) {
+        this.logout()
+      } else {
+        this.setState({
+          current_user: userData
+        })
+      }
+    })
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('token')) {
+      this.updateCurrentUser(localStorage.getItem('token'))
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <NavBarContainer user={testUser}/>
-        <MainContentContainer user={testUser}/>
+        {
+          this.state.current_user ?
+          <AuthAction />
+          :
+          <React.Fragment>
+          <NavBarContainer/>
+          <MainContentContainer user={testUser}/>
+          </React.Fragment>
+        }
       </div>
     )
   }
 }
 
-export default App;
+export default withRouter(App);
+
+
+// <Route path="/" render={ () => {
+//     return <
+//   }} />
