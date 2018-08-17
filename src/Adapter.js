@@ -28,16 +28,11 @@ const loginUser = (username, password) => {
 
 const getCurrentUser = (token) => {
   return fetch(baseURL + `/current_user`, {
-    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': token
-    },
-    body: JSON.stringify({
-      username,
-      password
-    })
-  })
+    }
+  }).then( resp => resp.json() )
 }
 
 const getHouseholdBy = (id) => {

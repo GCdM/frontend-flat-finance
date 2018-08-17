@@ -70,8 +70,10 @@ class App extends React.Component {
           this.state.current_user ?
           <AuthAction />
           :
+          <React.Fragment>
           <NavBarContainer/>
           <MainContentContainer user={testUser}/>
+          </React.Fragment>
         }
       </div>
     )
