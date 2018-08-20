@@ -1,40 +1,33 @@
 import React from 'react'
-import FeedContainer from './FeedContainer'
-import Adapter from '../Adapter'
+
 import Summary from '../components/Summary'
+import FeedContainer from './FeedContainer'
+import { getHouseholdBy } from '../Adapter'
+
+//Should receive props: user
 class MainContentContainer extends React.Component {
-
-
 
   state = {
     household: { id: 1, name: "Fun House" },
-    household: {},
     members: [],
   }
 
-  // const getExpenses = () => {
-  //   return fetch(baseURL + `expenses`)
-  //     .then( resp => resp.json() )
-  // }//SHOULD BE DEFINED IN ADAPTER BUT JUST GETTING TO WORK
-
-
-
-  componentDidMount(){
-    // getExpenses()
-    //   .then(data => console.table(data))
-    //   .then()
-    //defined in the adapter.
-
+  componentDidMount() {
+    getHouseholdBy(this.props.user.household_id)
+      .then( info => {
+        this.setState( info.household_data )
+      })
   }
+
+
   render() {
-    const { household, member_ids } = this.state
+    const { household, members } = this.state
 
     return (
       <React.Fragment>
         <Summary
           title={household.name}
           info ={this.state.members}
-
         />
 
         <FeedContainer/>

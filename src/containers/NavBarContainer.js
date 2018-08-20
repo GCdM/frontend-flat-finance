@@ -12,7 +12,7 @@ class NavBarContainer extends React.Component {
           I'm the menu
         </div>
         <div className="col">
-          <h1>Louis</h1>
+          <h1>{this.props.user.username}</h1>
         </div>
         <div className="col">
           <div className="row preview">
