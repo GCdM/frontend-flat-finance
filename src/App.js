@@ -76,7 +76,6 @@ class App extends React.Component {
               <Route path="/login" render={ () => {
                 return <AuthAction header="Log In" submit={this.login} />
               }} />
-              <Redirect to="/login" />
             </React.Fragment>
           </Switch>
           :
