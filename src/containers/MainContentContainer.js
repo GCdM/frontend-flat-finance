@@ -1,8 +1,9 @@
 import React from 'react'
 
+
 import PaymentFeedContainer from './PaymentFeedContainer'
-import Summary from '../components/Summary'
 import FeedContainer from './FeedContainer'
+import Summary from '../components/Summary'
 import { getHouseholdBy } from '../Adapter'
 
 //Should receive props: user

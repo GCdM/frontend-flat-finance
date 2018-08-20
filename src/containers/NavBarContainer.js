@@ -1,5 +1,6 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
+
+import SideMenu from '../components/SideMenu'
 
 //Should receive props: user
 class NavBarContainer extends React.Component {
@@ -15,7 +16,7 @@ class NavBarContainer extends React.Component {
     return (
       <div className="row">
         <div className="col">
-          I'm the menu
+          <SideMenu logout={this.props.logout} />
         </div>
         <div className="col">
           <h1>{username}</h1>

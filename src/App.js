@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 
 import './App.css'
-import NavBarContainer from './containers/NavBarContainer'
-import MainContentContainer from './containers/MainContentContainer'
+import HomePage from './containers/HomePage'
 import AuthAction from './auth/AuthAction'
 import { createUser, loginUser, getCurrentUser } from './Adapter'
 
@@ -38,6 +37,7 @@ class App extends React.Component {
   }
 
   logout = () => {
+    console.log("log out")
     this.setState({
       current_user: null
     })
@@ -69,26 +69,20 @@ class App extends React.Component {
         {
           !this.state.current_user ?
           <Switch>
-            <React.Fragment>
               <Route path="/signup" render={ () => {
                 return <AuthAction header="Sign Up" submit={this.signUp} />
               }} />
               <Route path="/login" render={ () => {
                 return <AuthAction header="Log In" submit={this.login} />
               }} />
-            </React.Fragment>
+              <Redirect to="/login" />
           </Switch>
           :
           <React.Fragment>
-            <Route path="/home" render={ () => {
-              return (
-                <React.Fragment>
-                  <NavBarContainer user={this.state.current_user}/>
-                  <MainContentContainer user={this.state.current_user} />
-                </React.Fragment>
-              )
+            <Route path="/" render={ () => {
+              return <HomePage user={this.state.current_user} logout={this.logout} />
             }} />
-            <Redirect to="/home" />
+            <Redirect to="/" />
           </React.Fragment>
           }
       </div>

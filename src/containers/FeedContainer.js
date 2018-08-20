@@ -22,8 +22,9 @@ class FeedContainer extends React.Component {
   fetchExpenses = () => {
     this.props.householdId && this.state.data.length === 0 &&
       getExpensesBy(this.props.householdId)
-        .then((expenses) => this.setState({
-          data: expenses
+        .then((expenses) =>
+          this.setState({
+            data: expenses
         }))
   }
 
@@ -39,7 +40,6 @@ class FeedContainer extends React.Component {
       <div className="feed">
         <h3>{this.props.header}</h3>
         {feedList}
-
       </div>
     )
   }
