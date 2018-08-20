@@ -38,6 +38,7 @@ class App extends React.Component {
   }
 
   logout = () => {
+    console.log("log out")
     this.setState({
       current_user: null
     })
@@ -69,7 +70,6 @@ class App extends React.Component {
         {
           !this.state.current_user ?
           <Switch>
-            <React.Fragment>
               <Route path="/signup" render={ () => {
                 return <AuthAction header="Sign Up" submit={this.signUp} />
               }} />
@@ -77,19 +77,18 @@ class App extends React.Component {
                 return <AuthAction header="Log In" submit={this.login} />
               }} />
               <Redirect to="/login" />
-            </React.Fragment>
           </Switch>
           :
           <React.Fragment>
-            <Route path="/home" render={ () => {
+            <Route path="/" render={ () => {
               return (
                 <React.Fragment>
-                  <NavBarContainer user={this.state.current_user}/>
+                  <NavBarContainer user={this.state.current_user} logout={this.logout}/>
                   <MainContentContainer user={this.state.current_user} />
                 </React.Fragment>
               )
             }} />
-            <Redirect to="/home" />
+            <Redirect to="/" />
           </React.Fragment>
           }
       </div>
