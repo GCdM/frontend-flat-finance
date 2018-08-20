@@ -5,9 +5,7 @@ const PaymentDetails = (props) => {
     <React.Fragment >
       <br></br>
       <div style = {{border: "1px solid black"}}>
-        {props.data.date}
-      <br></br>
-      <b>{props.data.payee} Paid {props.data.amount} to {props.data.recipient} for milk</b>
+       {props.data.user} paid {props.data.amount} on {props.data.created_at} for Expense_id{props.data.expense_id}
       </div>
     </React.Fragment>
   )

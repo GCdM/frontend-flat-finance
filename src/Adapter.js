@@ -49,6 +49,11 @@ const getExpensesBy = (householdId) => {
     .then( resp => resp.json() )
 }
 
+const getPaymentsBy = (householdId) => {
+  return fetch(baseURL + `/households/${householdId}/payments`)
+    .then( resp => resp.json() )
+}
+
 const getExpensePaymentsBy = (expenseId) => {
   return fetch(baseURL + `/expenses/${expenseId}/payments`)
     .then( resp => resp.json() )
@@ -61,4 +66,5 @@ export {
   getHouseholdBy,
   getExpensesBy,
   getExpensePaymentsBy,
+  getPaymentsBy, 
 }
