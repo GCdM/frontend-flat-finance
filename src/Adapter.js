@@ -7,8 +7,10 @@ const createUser = (username, password) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      username,
-      password
+      user: {
+        username,
+        password
+      }
     })
   }).then( resp => resp.json() )
 }
@@ -20,8 +22,10 @@ const loginUser = (username, password) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      username,
-      password
+      user: {
+        username,
+        password
+      }
     })
   }).then( resp => resp.json() )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 
 import './App.css'
 import NavBarContainer from './containers/NavBarContainer'
@@ -23,9 +23,9 @@ class App extends React.Component {
     if (userData.error) {
       alert(userData.error)
     } else {
-      this.props.history.push('/')
       localStorage.setItem('token', userData.token)
       this.updateCurrentUser(userData.token)
+      this.props.history.push('/home')
     }
   }
 
@@ -51,7 +51,7 @@ class App extends React.Component {
         this.logout()
       } else {
         this.setState({
-          current_user: userData
+          current_user: userData.user_data
         })
       }
     })
@@ -67,22 +67,34 @@ class App extends React.Component {
     return (
       <div className="App">
         {
-          this.state.current_user ?
-          <AuthAction />
+          !this.state.current_user ?
+          <Switch>
+            <React.Fragment>
+              <Route path="/signup" render={ () => {
+                return <AuthAction header="Sign Up" submit={this.signUp} />
+              }} />
+              <Route path="/login" render={ () => {
+                return <AuthAction header="Log In" submit={this.login} />
+              }} />
+              <Redirect to="/login" />
+            </React.Fragment>
+          </Switch>
           :
           <React.Fragment>
-          <NavBarContainer/>
-          <MainContentContainer user={testUser}/>
+            <Route path="/home" render={ () => {
+              return (
+                <React.Fragment>
+                  <NavBarContainer user={this.state.current_user}/>
+                  <MainContentContainer user={this.state.current_user} />
+                </React.Fragment>
+              )
+            }} />
+            <Redirect to="/home" />
           </React.Fragment>
-        }
+          }
       </div>
     )
   }
 }
 
 export default withRouter(App);
-
-
-// <Route path="/" render={ () => {
-//     return <
-//   }} />
