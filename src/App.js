@@ -6,12 +6,6 @@ import HomePage from './containers/HomePage'
 import AuthAction from './auth/AuthAction'
 import { createUser, loginUser, getCurrentUser } from './Adapter'
 
-const testUser = {
-  "id": 2,
-  "username": "Gabriel",
-  "household_id": 1,
-}
-
 class App extends React.Component {
 
   state = {
@@ -37,7 +31,6 @@ class App extends React.Component {
   }
 
   logout = () => {
-    console.log("log out")
     this.setState({
       current_user: null
     })
@@ -82,7 +75,6 @@ class App extends React.Component {
             <Route path="/" render={ () => {
               return <HomePage user={this.state.current_user} logout={this.logout} />
             }} />
-            <Redirect to="/" />
           </React.Fragment>
           }
       </div>
