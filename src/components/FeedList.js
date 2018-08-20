@@ -4,6 +4,7 @@ const FeedList = (props) => {
   return (
     <React.Fragment>
       {props.list}
+      
     </React.Fragment>
   )
 }

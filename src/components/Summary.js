@@ -3,7 +3,7 @@ import React from 'react'
 //Should receive props: title, info
 const Summary = (props) => {
 
-  const list = props.info.map( info => <div className="col">{info}</div> )
+  const list = props.members.map( info => <div className="col">{info}</div> )
 
   return (
     <React.Fragment>
