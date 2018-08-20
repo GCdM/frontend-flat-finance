@@ -8,7 +8,7 @@ import { getHouseholdBy } from '../Adapter'
 class MainContentContainer extends React.Component {
 
   state = {
-    household: {},
+    household: { id: 1, name: "Fun House" },
     members: [],
   }
 
@@ -19,6 +19,7 @@ class MainContentContainer extends React.Component {
       })
   }
 
+
   render() {
     const { household, members } = this.state
 
@@ -26,8 +27,9 @@ class MainContentContainer extends React.Component {
       <React.Fragment>
         <Summary
           title={household.name}
-          info={members}
+          info ={this.state.members}
         />
+
         <FeedContainer/>
       </React.Fragment>
     )
