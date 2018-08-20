@@ -19,9 +19,16 @@ const SideMenu = ({ logout }) => {
     <React.Fragment>
       <NavLink
         to="/"
+        exact
         style={linkStyle}
         activeStyle={activeLinkStyle}
       >Home</NavLink>
+      <NavLink
+        to="/new-expense"
+        exact
+        style={linkStyle}
+        activeStyle={activeLinkStyle}
+      >New Expense</NavLink>
       <Link
         to="#"
         onClick={logout}
