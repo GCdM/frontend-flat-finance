@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 
 import './App.css'
-import NavBarContainer from './containers/NavBarContainer'
-import MainContentContainer from './containers/MainContentContainer'
+import HomePage from './containers/HomePage'
 import AuthAction from './auth/AuthAction'
 import { createUser, loginUser, getCurrentUser } from './Adapter'
 
@@ -81,12 +80,7 @@ class App extends React.Component {
           :
           <React.Fragment>
             <Route path="/" render={ () => {
-              return (
-                <React.Fragment>
-                  <NavBarContainer user={this.state.current_user} logout={this.logout}/>
-                  <MainContentContainer user={this.state.current_user} />
-                </React.Fragment>
-              )
+              return <HomePage user={this.state.current_user} logout={this.logout} />
             }} />
             <Redirect to="/" />
           </React.Fragment>

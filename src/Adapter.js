@@ -54,6 +54,10 @@ const getExpensePaymentsBy = (expenseId) => {
     .then( resp => resp.json() )
 }
 
+const createExpense = (info) => {
+
+}
+
 export {
   createUser,
   loginUser,
@@ -61,4 +65,5 @@ export {
   getHouseholdBy,
   getExpensesBy,
   getExpensePaymentsBy,
+  createExpense,
 }
