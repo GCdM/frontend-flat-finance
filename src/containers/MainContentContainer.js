@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+import PaymentFeedContainer from './PaymentFeedContainer'
 import FeedContainer from './FeedContainer'
 import Summary from '../components/Summary'
 import { getHouseholdBy } from '../Adapter'
@@ -29,6 +31,7 @@ class MainContentContainer extends React.Component {
           members={members}
         />
         <FeedContainer header="Expenses" householdId={this.state.household.id} />
+        <PaymentFeedContainer header="Payments" householdId={this.state.household.id} />
       </React.Fragment>
     )
   }
