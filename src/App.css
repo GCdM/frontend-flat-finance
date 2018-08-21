@@ -26,3 +26,19 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.expense-detail {
+  border: solid 1pt black;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.feed {
+  background-color: beige;
+}

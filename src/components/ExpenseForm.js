@@ -62,4 +62,4 @@ class ExpenseForm extends React.Component {
   }
 }
 
-export default ExpenseForm
+export default withRouter(ExpenseForm)

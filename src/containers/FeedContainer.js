@@ -36,10 +36,14 @@ class FeedContainer extends React.Component {
     const feedList = this.state.data.map( data => <ExpenseDetails expense={data.expense_data} /> )
 
     return (
-      <div className="feed eight wide column">
-        <h3>{this.props.header}</h3>
-        {feedList}
-      </div>
+      <React.Fragment>
+        <div className="one wide column"></div>
+        <div className="feed six wide column">
+          <h3>{this.props.header}</h3>
+          {feedList}
+        </div>
+        <div className="one wide column"></div>
+      </React.Fragment>
     )
   }
 }
