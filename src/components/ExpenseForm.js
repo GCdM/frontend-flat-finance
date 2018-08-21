@@ -20,7 +20,8 @@ class ExpenseForm extends React.Component {
     event.preventDefault()
 
     const info = {...this.state, user_id: this.props.userId}
-
+    console.log(this.props.userId)
+    console.log(info)
     createExpense(info)
       .then(console.log)
   }
@@ -50,7 +51,7 @@ class ExpenseForm extends React.Component {
           <br></br>
           <label htmlFor="amount" >Amount (£)</label>
           <input type="number" name="amount" step="any"
-            value={this.state.amount.toFixed(2)}
+            value={this.state.amount}
             onChange={this.handleChange}
           />
           <br></br>
