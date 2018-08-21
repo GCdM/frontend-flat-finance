@@ -13,7 +13,7 @@ const createUser = (username, password) => {
         password
       }
     })
-  }).then( resp => resp.json() )
+  }).then( resp => resp.json())
 }
 
 const loginUser = (username, password) => {
@@ -98,8 +98,7 @@ const postPaymentBy = (id) => {
     body: JSON.stringify({
       id
     })
-  })
-    .then( resp => resp.json() )
+  }).then( resp => resp.json() )
 }
 
 const getExpensePaymentsBy = (expenseId) => {
