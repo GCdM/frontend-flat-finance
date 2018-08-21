@@ -58,7 +58,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App ui grid">
         {
           !this.state.current_user ?
           <Switch>
@@ -75,6 +75,7 @@ class App extends React.Component {
             <Route path="/" render={ () => {
               return <HomePage user={this.state.current_user} logout={this.logout} />
             }} />
+            <Redirect to="/" />
           </React.Fragment>
           }
       </div>

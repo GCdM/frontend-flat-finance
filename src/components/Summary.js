@@ -3,19 +3,20 @@ import React from 'react'
 //Should receive props: title, info
 const Summary = (props) => {
 
-  const list = props.members.map( info => <div className="col">{info}</div> )
+  const list = props.members.map( info => <div className="column">{info}</div> )
 
   return (
-    <React.Fragment>
+    <div className="column">
       <hr></hr>
-      <div>
+      <div className="row">
         <h2>{props.title}</h2>
       </div>
-      <div className="row">
+      <br></br>
+      <div className="ui equal width grid">
         {list}
       </div>
       <hr></hr>
-    </React.Fragment>
+    </div>
   )
 }
 

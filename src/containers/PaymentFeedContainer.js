@@ -37,7 +37,7 @@ class PaymentFeedContainer extends React.Component {
     const posts = newArr.map( payment => <PaymentDetails data={payment.payment_data}/>)
 
     return (
-      <div className="feed col">
+      <div className="feed eight wide column">
         <h3>{this.props.header}</h3>
         {posts}
 

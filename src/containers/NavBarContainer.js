@@ -14,24 +14,20 @@ class NavBarContainer extends React.Component {
     } = this.props.user
 
     return (
-      <div className="row">
-        <div className="col">
+      <div className="row navbar">
+        <div className="six wide column">
           <SideMenu logout={this.props.logout} />
         </div>
-        <div className="col">
+        <div className="four wide column">
           <h1>{username}</h1>
         </div>
-        <div className="col">
-          <div className="row preview">
-            <div className="col debit-preview">
-              <h5>Debit</h5>
-              <h4>{debit}</h4>
-            </div>
-            <div className="col credit-preview">
-              <h5>Credit</h5>
-              <h4>{credit}</h4>
-            </div>
-          </div>
+        <div className="three wide column debit-preview">
+          <h5>Debit</h5>
+          <h4>{debit}</h4>
+        </div>
+        <div className="three wide column credit-preview">
+          <h5>Credit</h5>
+          <h4>{credit}</h4>
         </div>
       </div>
     )

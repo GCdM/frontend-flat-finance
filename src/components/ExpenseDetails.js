@@ -34,7 +34,7 @@ class ExpenseDetails extends React.Component {
 
       <React.Fragment>
         <br></br>
-        <div style = {{border: "1px solid black"}}>
+        <div className="expense-detail">
           <h5>{this.props.expense.user} </h5>
           <h4> {this.props.expense.purchase} for {this.props.expense.amount}</h4>
           <br></br>

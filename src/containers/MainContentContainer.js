@@ -26,15 +26,17 @@ class MainContentContainer extends React.Component {
 
     return (
       <React.Fragment>
-        <Summary
-          title={household.name}
-          members={members}
-        />
-      <div className='row'>
-        <FeedContainer header="Expenses" householdId={this.state.household.id} />
-        <PaymentFeedContainer header="Payments" householdId={this.state.household.id} />
-      </div>
-    </React.Fragment>
+        <div className="row">
+          <Summary
+            title={household.name}
+            members={members}
+          />
+        </div>
+        <div className="feed-container row">
+          <FeedContainer header="Expenses" householdId={this.state.household.id} />
+          <PaymentFeedContainer header="Payments" householdId={this.state.household.id} />
+        </div>
+      </React.Fragment>
     )
   }
 }

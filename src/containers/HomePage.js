@@ -17,6 +17,7 @@ class HomePage extends React.Component {
 
     return (
       <React.Fragment>
+        <hr></hr>
         <NavBarContainer user={user} logout={logout} />
         {
           user.household_id ?
