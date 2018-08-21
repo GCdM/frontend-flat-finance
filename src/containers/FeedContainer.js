@@ -32,12 +32,14 @@ class FeedContainer extends React.Component {
     this.fetchExpenses()
   }
 
+  
+
   render() {
 
-    const feedList = this.state.data.map( data => <ExpenseDetails expense={data.expense_data}/> )
+    const feedList = this.state.data.map( data => <ExpenseDetails expense={data.expense_data} /> )
 
     return (
-      <div className="feed">
+      <div className="feed col">
         <h3>{this.props.header}</h3>
         {feedList}
       </div>

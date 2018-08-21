@@ -1,7 +1,7 @@
 import React from 'react'
 //render two feeds and build payment details
 import PaymentStatusSquare from './PaymentStatusSquare'
-import { getExpensePaymentsBy } from '../Adapter'
+import { getExpensePaymentsBy, postPaymentBy } from '../Adapter'
 
 class ExpenseDetails extends React.Component {
 
@@ -9,8 +9,13 @@ class ExpenseDetails extends React.Component {
     payments: [],
   }
 
+  handlePayment = (id) => {
+    console.log(id)
+    postPaymentBy(id)
+  }
+
   createPaymentSquares = () => {
-    this.state.payments.map( payment => < PaymentStatusSquare payment={payment}/>)
+    this.state.payments.map( payment => < PaymentStatusSquare payment={payment} />)
   }
 
   componentDidMount() {
@@ -25,7 +30,6 @@ class ExpenseDetails extends React.Component {
 
 
   render() {
-    console.log(this.state.payments)
     return (
 
       <React.Fragment>
@@ -36,8 +40,7 @@ class ExpenseDetails extends React.Component {
           <br></br>
           <h4>{this.props.expense.description}</h4>
           <br></br>
-          {this.createPaymentSquares()}
-          {this.state.payments.map( payment => < PaymentStatusSquare payment={payment}/>)}
+          {this.state.payments.map( payment => < PaymentStatusSquare payment={payment} handleClick={this.handlePayment} />)}
        </div>
 
       </React.Fragment>
