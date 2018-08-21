@@ -54,9 +54,23 @@ const getPaymentsBy = (householdId) => {
     .then( resp => resp.json() )
 }
 
+const postPaymentBy = (id) => {
+  return fetch(baseURL + `/payments/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id
+    })
+  })
+    .then( resp => resp.json() )
+}
+
 const getExpensePaymentsBy = (expenseId) => {
   return fetch(baseURL + `/expenses/${expenseId}/payments`)
     .then( resp => resp.json() )
+
 }
 
 const createExpense = (info) => {
@@ -70,7 +84,8 @@ export {
   getHouseholdBy,
   getExpensesBy,
   getExpensePaymentsBy,
-  getPaymentsBy, 
+  getPaymentsBy,
   createExpense,
+  postPaymentBy,
 
 }

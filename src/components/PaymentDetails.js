@@ -5,7 +5,7 @@ const PaymentDetails = (props) => {
     <React.Fragment >
       <br></br>
       <div style = {{border: "1px solid black"}}>
-       {props.data.user} paid {props.data.amount} on {props.data.created_at} for Expense_id{props.data.expense_id}
+       {props.data.user} paid {props.data.amount} on {props.data.updated_at} for {props.data.expense_purchase} 
       </div>
     </React.Fragment>
   )

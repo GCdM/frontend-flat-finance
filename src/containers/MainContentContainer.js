@@ -30,9 +30,11 @@ class MainContentContainer extends React.Component {
           title={household.name}
           members={members}
         />
+      <div className='row'>
         <FeedContainer header="Expenses" householdId={this.state.household.id} />
         <PaymentFeedContainer header="Payments" householdId={this.state.household.id} />
-      </React.Fragment>
+      </div>
+    </React.Fragment>
     )
   }
 }
