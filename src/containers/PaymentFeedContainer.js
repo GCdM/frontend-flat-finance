@@ -32,7 +32,7 @@ class PaymentFeedContainer extends React.Component {
 
   render() {
 
-    const newArr = this.state.data.filter(data => !data.paid)
+    const newArr = this.state.data.filter(data => data.payment_data.paid)
 
     const posts = newArr.map( payment => <PaymentDetails data={payment.payment_data}/>)
 
