@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import { createExpense } from '../Adapter'
 
@@ -20,10 +21,9 @@ class ExpenseForm extends React.Component {
     event.preventDefault()
 
     const info = {...this.state, user_id: this.props.userId}
-    console.log(this.props.userId)
-    console.log(info)
+
     createExpense(info)
-      .then(console.log)
+      .then( this.props.history.push('/') )
   }
 
   render() {

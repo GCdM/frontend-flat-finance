@@ -1,13 +1,33 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+
+import { createHousehold, addUserToHousehold } from '../Adapter'
 
 class HouseForm extends React.Component {
 
-  handleExistingHouse = () => {
-
+  state = {
+    id: 0,
+    name: "",
   }
 
-  handleNewHouse = () => {
-    
+  handleNewHouse = (event) => {
+    event.preventDefault()
+    createHousehold(this.state.name, this.props.userId)
+      .then( this.props.history.push('/') )
+      .then( window.location.reload() )
+  }
+
+  handleExistingHouse = (event) => {
+    event.preventDefault()
+    addUserToHousehold(this.props.userId, this.state.id)
+      .then( this.props.history.push('/') )
+      .then( window.location.reload() )
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   render() {
@@ -19,7 +39,7 @@ class HouseForm extends React.Component {
         <form onSubmit={this.handleExistingHouse}>
           <label>Existing Household ID (can be found under Household name)</label>
           <br></br>
-          <input type="number" name="id"/>
+          <input type="number" name="id" value={this.state.id} onChange={this.handleChange} />
           <input type="submit" />
         </form>
         <br></br>
@@ -28,7 +48,7 @@ class HouseForm extends React.Component {
         <form onSubmit={this.handleNewHouse}>
           <label>New Household Name</label>
           <br></br>
-          <input type="text" name="name" />
+          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
           <input type="submit" />
         </form>
       </React.Fragment>
@@ -36,4 +56,4 @@ class HouseForm extends React.Component {
   }
 }
 
-export default HouseForm
+export default withRouter(HouseForm)

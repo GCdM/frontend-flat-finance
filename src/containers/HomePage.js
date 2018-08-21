@@ -32,7 +32,7 @@ class HomePage extends React.Component {
           :
           <Switch>
             <Route path="/choose-house" render={ () => {
-              return <HouseForm />
+              return <HouseForm userId={user.id} />
             }} />
             <Redirect to="/choose-house" />
           </Switch>

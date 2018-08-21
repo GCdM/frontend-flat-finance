@@ -41,14 +41,15 @@ const getCurrentUser = (token) => {
 }
 
 //HOUSEHOLDS
-const createHousehold = (name) => {
+const createHousehold = (name, userId) => {
   return fetch(baseURL + `/households`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      household: { name }
+      household: { name },
+      user_id: userId,
     })
   }).then( resp => resp.json() )
 }
@@ -88,9 +89,23 @@ const getExpensesBy = (householdId) => {
     .then( resp => resp.json() )
 }
 
+const postPaymentBy = (id) => {
+  return fetch(baseURL + `/payments/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id
+    })
+  })
+    .then( resp => resp.json() )
+}
+
 const getExpensePaymentsBy = (expenseId) => {
   return fetch(baseURL + `/expenses/${expenseId}/payments`)
     .then( resp => resp.json() )
+
 }
 
 //PAYMENTS
@@ -110,4 +125,6 @@ export {
   getExpensesBy,
   getExpensePaymentsBy,
   getPaymentsBy,
+  postPaymentBy,
+
 }
