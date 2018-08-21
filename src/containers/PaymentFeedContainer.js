@@ -9,14 +9,16 @@ import { getExpensesBy, getPaymentsBy } from '../Adapter'
 
 class PaymentFeedContainer extends React.Component {
   state = {
-    data: []
+    fetched: false,
+    data: [],
   }
 
 
   fetchPayments = () => {
-    this.props.householdId && this.state.data.length === 0 &&
+    this.props.householdId && !this.state.fetched &&
       getPaymentsBy(this.props.householdId)
         .then((payments) => this.setState({
+          fetched: true,
           data: payments
         }))
   }

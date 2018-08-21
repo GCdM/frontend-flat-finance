@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 import { createExpense } from '../Adapter'
 
@@ -22,7 +23,7 @@ class ExpenseForm extends React.Component {
     const info = {...this.state, user_id: this.props.userId}
 
     createExpense(info)
-      .then(console.log)
+      .then( this.props.history.push('/') )
   }
 
   render() {
@@ -50,7 +51,7 @@ class ExpenseForm extends React.Component {
           <br></br>
           <label htmlFor="amount" >Amount (£)</label>
           <input type="number" name="amount" step="any"
-            value={this.state.amount.toFixed(2)}
+            value={this.state.amount}
             onChange={this.handleChange}
           />
           <br></br>

@@ -9,33 +9,30 @@ import { getExpensesBy } from '../Adapter'
 
 class FeedContainer extends React.Component {
   state = {
+    fetched: false,
     data: []
   }
-
-
-
 
   checkMemberPaid = (name) =>{
     return this.state.dummyData.payments[name]
       }
 
   fetchExpenses = () => {
-    this.props.householdId && this.state.data.length === 0 &&
+    if (this.props.householdId && !this.state.fetched) {
       getExpensesBy(this.props.householdId)
         .then((expenses) =>
           this.setState({
-            data: expenses
+            data: expenses,
+            fetched: true,
         }))
+    }
   }
 
   componentDidUpdate() {
     this.fetchExpenses()
   }
 
-  
-
   render() {
-
     const feedList = this.state.data.map( data => <ExpenseDetails expense={data.expense_data} /> )
 
     return (
