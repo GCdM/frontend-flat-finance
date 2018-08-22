@@ -10,7 +10,10 @@ import { getHouseholdBy } from '../Adapter'
 class MainContentContainer extends React.Component {
 
   state = {
-    household: {},
+    household: {
+      id: 0,
+      name: "",
+    },
     members: [],
   }
 
@@ -28,7 +31,7 @@ class MainContentContainer extends React.Component {
       <React.Fragment>
         <div className="row">
           <Summary
-            title={household.name}
+            household={household}
             members={members}
           />
         </div>

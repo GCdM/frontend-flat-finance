@@ -1,15 +1,14 @@
 import React from 'react'
 
-//Should receive props: title, info
-const Summary = (props) => {
+const Summary = ({ household, members }) => {
 
-  const list = props.members.map( info => <div className="column">{info}</div> )
+  const list = members.map( info => <div className="column">{info}</div> )
 
   return (
     <div className="column">
-      <hr></hr>
       <div className="row">
-        <h2>{props.title}</h2>
+        <h1 className="household">{household.name}</h1>
+        <span><i>(Household ID: {household.id} )</i></span>
       </div>
       <br></br>
       <div className="ui equal width grid">

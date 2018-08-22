@@ -19,15 +19,15 @@ class NavBarContainer extends React.Component {
           <SideMenu logout={this.props.logout} />
         </div>
         <div className="four wide column">
-          <h1>{username}</h1>
+          <h1 className="current-user">{username}</h1>
         </div>
         <div className="three wide column debit-preview">
-          <h5>Debit</h5>
-          <h4>{debit}</h4>
+          <h4 className="debit">Debit</h4>
+          <h3 className="debit-value">{debit}</h3>
         </div>
         <div className="three wide column credit-preview">
-          <h5>Credit</h5>
-          <h4>{credit}</h4>
+          <h4 className="credit">Credit</h4>
+          <h3 className="credit-value">{credit}</h3>
         </div>
       </div>
     )

@@ -27,18 +27,64 @@
   to { transform: rotate(360deg); }
 }
 
-.expense-detail {
-  border: solid 1pt black;
+.navbar {
+  background-color: #AEE8FF;
+  border: solid;
+  border-color: black;
 }
 
-.red {
-  background-color: red;
+.current-user {
+  font-style: oblique;
+  font-size: 25pt;
 }
 
-.green {
-  background-color: green;
+div[class*="-preview"] {
+  /* border: solid grey 1px;
+  padding: 3px; */
+}
+
+.debit {
+  color: #AE1212;
+}
+
+.credit {
+  color: #238529;
+}
+
+.debit-value {
+  color: #E82020;
+}
+
+.credit-value {
+  color: #299C30;
+}
+
+.household {
+  font-size: 30pt;
 }
 
 .feed {
   background-color: beige;
+  border: solid gold 3px;
+  padding: 10px;
+}
+
+.expense-detail {
+  border: solid 1pt black;
+  padding: 10px;
+}
+
+.status-square {
+  padding: 5px;
+  margin: 0px 3px;
+}
+
+.red {
+  background-color: red;
+  border: solid #8A1616 2px;
+}
+
+.green {
+  background-color: green;
+  border: solid #16480F 2px; 
 }
