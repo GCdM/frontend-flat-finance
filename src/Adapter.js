@@ -90,6 +90,7 @@ const getExpensesBy = (householdId) => {
 }
 
 const postPaymentBy = (id) => {
+  
   return fetch(baseURL + `/payments/${id}`, {
     method: 'PATCH',
     headers: {
@@ -98,10 +99,11 @@ const postPaymentBy = (id) => {
     body: JSON.stringify({
       id
     })
-  }).then( resp => resp.json() )
+  }).then(resp => resp.json())
 }
 
 const getExpensePaymentsBy = (expenseId) => {
+
   return fetch(baseURL + `/expenses/${expenseId}/payments`)
     .then( resp => resp.json() )
 

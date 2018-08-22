@@ -10,14 +10,18 @@ class ExpenseDetails extends React.Component {
   }
 
   handlePayment = (id) => {
-    postPaymentBy(id)
-      .then( getExpensePaymentsBy(this.props.expense.id)
-        .then( payments => {
-          this.setState({
-            payments
-          })
-        })
-  )}
+    const postPromise = postPaymentBy(id)
+    postPromise.then(payments => {
+      this.setState({
+        payments
+      })
+
+      // getExpensePaymentsBy(this.props.expense.id).then(payments => {
+      // this.setState({
+      //   payments
+      // })
+    })
+  }
 
   createPaymentSquares = () => {
     this.state.payments.map( payment => < PaymentStatusSquare payment={payment} />)
