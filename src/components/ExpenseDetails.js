@@ -1,4 +1,6 @@
 import React from 'react'
+import { Accordion, Icon } from 'semantic-ui-react'
+
 //render two feeds and build payment details
 import PaymentStatusSquare from './PaymentStatusSquare'
 import { getExpensePaymentsBy, postPaymentBy } from '../Adapter'
@@ -42,16 +44,17 @@ class ExpenseDetails extends React.Component {
     return (
 
       <React.Fragment>
-        <br></br>
-        <div className="expense-detail">
-          <h5>{this.props.expense.user} </h5>
-          <h4> {this.props.expense.purchase} for {this.props.expense.amount}</h4>
+        <Accordion.Title active={this.props.activeIndex === this.props.index} index={this.props.index} onClick={this.props.handleClick}>
+          <i className="dropdown icon"></i>
+          {this.props.expense.user}
           <br></br>
-          <h4>{this.props.expense.description}</h4>
+          {this.props.expense.purchase} for {this.props.expense.amount}
+        </Accordion.Title>
+        <Accordion.Content active={this.props.activeIndex === this.props.index}>
+          <p>{this.props.expense.description}</p>
           <br></br>
           {this.state.payments.map( payment => < PaymentStatusSquare payment={payment} handleClick={this.handlePayment} />)}
-       </div>
-
+        </Accordion.Content>
       </React.Fragment>
     )
   }

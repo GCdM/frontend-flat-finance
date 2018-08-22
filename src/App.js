@@ -23,6 +23,7 @@ class App extends React.Component {
   }
 
   signUp = (username, password) => {
+    console.log(username, password)
     createUser(username, password).then( this.postAuth )
   }
 
@@ -61,21 +62,17 @@ class App extends React.Component {
       <div className="App ui grid">
         {
           !this.state.current_user ?
-          <Switch>
-              <Route path="/signup" render={ () => {
-                return <AuthAction header="Sign Up" submit={this.signUp} />
-              }} />
-              <Route path="/login" render={ () => {
-                return <AuthAction header="Log In" submit={this.login} />
-              }} />
-              <Redirect to="/login" />
-          </Switch>
+          <React.Fragment>
+            <Route exact path="/login" render={ () => {
+              return <AuthAction login={this.login} signup={this.signUp} />
+            }} />
+            <Redirect to="/login" />
+          </React.Fragment>
           :
           <React.Fragment>
             <Route path="/" render={ () => {
               return <HomePage user={this.state.current_user} logout={this.logout} />
             }} />
-            <Redirect to="/" />
           </React.Fragment>
           }
       </div>

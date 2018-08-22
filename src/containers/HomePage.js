@@ -37,7 +37,6 @@ class HomePage extends React.Component {
             }} />
             <Redirect to="/choose-house" />
           </Switch>
-
         }
       </React.Fragment>
     )

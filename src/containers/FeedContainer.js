@@ -1,4 +1,5 @@
 import React from 'react'
+import { Accordion, Icon } from 'semantic-ui-react'
 
 import FeedTitle from '../components/FeedTitle'
 import FeedList from '../components/FeedList'
@@ -10,7 +11,8 @@ import { getExpensesBy } from '../Adapter'
 class FeedContainer extends React.Component {
   state = {
     fetched: false,
-    data: []
+    data: [],
+    activeIndex: -1,
   }
 
   checkMemberPaid = (name) =>{
@@ -28,19 +30,29 @@ class FeedContainer extends React.Component {
     }
   }
 
+  handleClick = (e, titleProps) => {
+    const { index } = titleProps
+    const { activeIndex } = this.state
+    const newIndex = activeIndex === index ? -1 : index
+
+    this.setState({ activeIndex: newIndex })
+  }
+
   componentDidUpdate() {
     this.fetchExpenses()
   }
 
   render() {
-    const feedList = this.state.data.map( data => <ExpenseDetails expense={data.expense_data} /> )
+    const feedList = this.state.data.map( (data,index) => <ExpenseDetails activeIndex={this.state.activeIndex} index={index} expense={data.expense_data} handleClick={this.handleClick}/> )
 
     return (
       <React.Fragment>
         <div className="one wide column"></div>
         <div className="feed six wide column">
           <h3>{this.props.header}</h3>
-          {feedList}
+          <Accordion styled>
+            {feedList}
+          </Accordion>
         </div>
         <div className="one wide column"></div>
       </React.Fragment>

@@ -90,7 +90,7 @@ const getExpensesBy = (householdId) => {
 }
 
 const postPaymentBy = (id) => {
-  
+
   return fetch(baseURL + `/payments/${id}`, {
     method: 'PATCH',
     headers: {

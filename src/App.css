@@ -28,9 +28,11 @@
 }
 
 .navbar {
-  background-color: #AEE8FF;
+  background-color: #9AC6FF;
   border: solid;
   border-color: black;
+  position: fixed;
+  top: 0px;
 }
 
 .current-user {
@@ -63,9 +65,13 @@ div[class*="-preview"] {
   font-size: 30pt;
 }
 
+.feed-container {
+  background-color: #F7EDFF;
+}
+
 .feed {
-  background-color: beige;
-  border: solid gold 3px;
+  background-color: #F2E2FF;
+  border: solid  #6C81B4 3px;
   padding: 10px;
 }
 
@@ -86,5 +92,5 @@ div[class*="-preview"] {
 
 .green {
   background-color: green;
-  border: solid #16480F 2px; 
+  border: solid #16480F 2px;
 }
